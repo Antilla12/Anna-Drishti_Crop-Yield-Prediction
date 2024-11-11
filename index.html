@@ -1,0 +1,1028 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anna Drishti</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #8ed9ff; /* Light Blue Background */
+            color: #2c3e50; /* Darker text color */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px !important;
+            border-radius: 40px;
+            background-color: rgb(217, 239, 255); /* White background for the form */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #419ddf; /* Vibrant blue */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        #message {
+            color: darkblue; /* Text color of tips */
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .form-control {
+            border: 2px solid #2980b9; /* Blue border for inputs */
+        }
+        .form-control:focus {
+            border-color: #3498db; /* Lighter blue on focus */
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        .btn-submit {
+            background-color: #27ae60; /* Green background for button */
+            color: white;
+            border: none;
+        }
+        .btn-submit:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+        .tips-section {
+            background-color: #f7f9fc; /* Light grey background */
+            border: 1px solid #2980b9; /* Blue border */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/css2?family=Gentona:wght@700&display=swap" rel="stylesheet">
+
+<h1 class="text-center mt-4 title">Anna Drishti</h1>
+
+<style>
+    .title {
+        font-family: 'Gentona', sans-serif; /* Updated to Gentona font */
+        font-size: 3.5rem; /* Larger font size for prominence */
+        color: #ffffff; /* Text color */
+        background: linear-gradient(90deg, #1E90FF, #00BFFF); /* Gradient shade of blue */
+        -webkit-background-clip: text; /* Clip background to text */
+        -webkit-text-fill-color: transparent; /* Make text transparent */
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Shadow effect for clarity */
+        padding: 20px; /* Add padding */
+        border-radius: 10px; /* Rounded corners */
+        margin-bottom: 20px; /* Spacing below */
+        letter-spacing: 2px; /* Increase letter spacing for a modern touch */
+    }
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="title">Predict Your Crop Yield</h2>
+                <form  id="predictionForm" action="{{ url_for('predict') }}" method="POST" class="mt-4">
+                    <div class="mb-3">
+                        <label for="State_Name" class="form-label">State Name</label>
+                        <select name="State_Name" id="State_Name" class="form-control" required>
+                            <option value="">Select State</option>
+                            <option value="andhra pradesh" {% if request.form['State_Name'] == 'andhra pradesh' %}selected{% endif %}>Andhra Pradesh</option>
+                            <option value="arunachal pradesh"{% if request.form['State_Name'] == 'arunachal pradesh' %}selected{% endif %}>Arunachal Pradesh</option>
+                            <option value="assam" {% if request.form['State_Name'] == 'assam' %}selected{% endif %}>Assam</option>
+                            <option value="bihar" {% if request.form['State_Name'] == 'bihar' %}selected{% endif %}>Bihar</option>
+                            <option value="chhattisgarh" {% if request.form['State_Name'] == 'chhattisgarh' %}selected{% endif %}>Chhattisgarh</option>
+                            <option value="goa" {% if request.form['State_Name'] == 'goa' %}selected{% endif %}>Goa</option>
+                            <option value="gujarat" {% if request.form['State_Name'] == 'gujarat' %}selected{% endif %}>Gujarat</option>
+                            <option value="haryana" {% if request.form['State_Name'] == 'haryana' %}selected{% endif %}>Haryana</option>
+                            <option value="himachal pradesh" {% if request.form['State_Name'] == 'himachal pradesh' %}selected{% endif %}>Himachal Pradesh</option>
+                            <option value="jharkhand" {% if request.form['State_Name'] == 'jharkhand' %}selected{% endif %}>Jharkhand</option>
+                            <option value="karnataka" {% if request.form['State_Name'] == 'karnataka' %}selected{% endif %}>Karnataka</option>
+                            <option value="kerala" {% if request.form['State_Name'] == 'kerala' %}selected{% endif %}>Kerala</option>
+                            <option value="madhya pradesh" {% if request.form['State_Name'] == 'madhya pradesh' %}selected{% endif %}>Madhya Pradesh</option>
+                            <option value="maharashtra" {% if request.form['State_Name'] == 'maharashtra' %}selected{% endif %}>Maharashtra</option>
+                            <option value="manipur" {% if request.form['State_Name'] == 'manipur' %}selected{% endif %}>Manipur</option>
+                            <option value="meghalaya" {% if request.form['State_Name'] == 'meghalaya' %}selected{% endif %}>Meghalaya</option>
+                            <option value="mizoram" {% if request.form['State_Name'] == 'mizoram' %}selected{% endif %}>Mizoram</option>
+                            <option value="nagaland" {% if request.form['State_Name'] == 'nagaland' %}selected{% endif %}>Nagaland</option>
+                            <option value="odisha" {% if request.form['State_Name'] == 'odisha' %}selected{% endif %}>Odisha</option>
+                            <option value="punjab" {% if request.form['State_Name'] == 'punjab' %}selected{% endif %}>Punjab</option>
+                            <option value="rajasthan" {% if request.form['State_Name'] == 'rajasthan' %}selected{% endif %}>Rajasthan</option>
+                            <option value="sikkim" {% if request.form['State_Name'] == 'sikkim' %}selected{% endif %}>Sikkim</option>
+                            <option value="tamil nadu" {% if request.form['State_Name'] == 'tamil nadu' %}selected{% endif %}>Tamil Nadu</option>
+                            <option value="telangana" {% if request.form['State_Name'] == 'telangana' %}selected{% endif %}>Telangana</option>
+                            <option value="tripura" {% if request.form['State_Name'] == 'tripura' %}selected{% endif %}>Tripura</option>
+                            <option value="uttar pradesh" {% if request.form['State_Name'] == 'uttar pradesh' %}selected{% endif %}>Uttar Pradesh</option>
+                            <option value="uttarakhand" {% if request.form['State_Name'] == 'uttarakhand' %}selected{% endif %}>Uttarakhand</option>
+                            <option value="west bengal" {% if request.form['State_Name'] == 'west bengal' %}selected{% endif %}>West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Crop" class="form-label">Crop</label>
+                        <select id="crop" name="Crop" class="form-control" value="{{ request.form['Crop_Type'] if request.form['Crop_Type'] else '' }}" required>
+                            <option value="">Select Crop</option>
+                            <option value="cotton" {% if request.form['Crop'] == 'cotton' %}selected{% endif %}>Cotton</option>
+                            <option value="horsegram" {% if request.form['Crop'] == 'horsegram' %}selected{% endif %}>Horsegram</option>
+                            <option value="jowar" {% if request.form['Crop'] == 'jowar' %}selected{% endif %}>Jowar</option>
+                            <option value="maize" {% if request.form['Crop'] == 'maize' %}selected{% endif %}>Maize</option>
+                            <option value="moong" {% if request.form['Crop'] == 'moong' %}selected{% endif %}>Moong</option>
+                            <option value="ragi" {% if request.form['Crop'] == 'ragi' %}selected{% endif %}>Ragi</option>
+                            <option value="rice" {% if request.form['Crop'] == 'rice' %}selected{% endif %}>Rice</option>
+                            <option value="sunflower" {% if request.form['Crop'] == 'sunflower' %}selected{% endif %}>Sunflower</option>
+                            <option value="wheat" {% if request.form['Crop'] == 'wheat' %}selected{% endif %}>Wheat</option>
+                            <option value="sesamum" {% if request.form['Crop'] == 'sesamum' %}selected{% endif %}>Sesamum</option>
+                            <option value="soyabean" {% if request.form['Crop'] == 'soyabean' %}selected{% endif %}>Soyabean</option>
+                            <option value="rapeseed" {% if request.form['Crop'] == 'rapeseed' %}selected{% endif %}>Rapeseed</option>
+                            <option value="jute" {% if request.form['Crop'] == 'jute' %}selected{% endif %}>Jute</option>
+                            <option value="arecanut" {% if request.form['Crop'] == 'arecanut' %}selected{% endif %}>Arecanut</option>
+                            <option value="onion" {% if request.form['Crop'] == 'onion' %}selected{% endif %}>Onion</option>
+                            <option value="potato" {% if request.form['Crop'] == 'potato' %}selected{% endif %}>Potato</option>
+                            <option value="sweetpotato" {% if request.form['Crop'] == 'sweetpotato' %}selected{% endif %}>Sweet Potato</option>
+                            <option value="tapioca" {% if request.form['Crop'] == 'tapioca' %}selected{% endif %}>Tapioca</option>
+                            <option value="turmeric" {% if request.form['Crop'] == 'turmeric' %}selected{% endif %}>Turmeric</option>
+                            <option value="barley" {% if request.form['Crop'] == 'barley' %}selected{% endif %}>Barley</option>
+                            <option value="banana" {% if request.form['Crop'] == 'banana' %}selected{% endif %}>Banana</option>
+                            <option value="coriander" {% if request.form['Crop'] == 'coriander' %}selected{% endif %}>Coriander</option>
+                            <option value="garlic" {% if request.form['Crop'] == 'garlic' %}selected{% endif %}>Garlic</option>
+                            <option value="blackpepper" {% if request.form['Crop'] == 'blackpepper' %}selected{% endif %}>Black Pepper</option>
+                            <option value="cardamom" {% if request.form['Crop'] == 'cardamom' %}selected{% endif %}>Cardamom</option>
+                            <option value="cashewnuts" {% if request.form['Crop'] == 'cashewnuts' %}selected{% endif %}>Cashewnuts</option>
+                            <option value="blackgram" {% if request.form['Crop'] == 'blackgram' %}selected{% endif %}>Blackgram</option>
+                            <option value="coffee" {% if request.form['Crop'] == 'coffee' %}selected{% endif %}>Coffee</option>
+                            <option value="ladyfinger" {% if request.form['Crop'] == 'ladyfinger' %}selected{% endif %}>Ladyfinger</option>
+                            <option value="brinjal" {% if request.form['Crop'] == 'brinjal' %}selected{% endif %}>Brinjal</option>
+                            <option value="cucumber" {% if request.form['Crop'] == 'cucumber' %}selected{% endif %}>Cucumber</option>
+                            <option value="grapes" {% if request.form['Crop'] == 'grapes' %}selected{% endif %}>Grapes</option>
+                            <option value="mango" {% if request.form['Crop'] == 'mango' %}selected{% endif %}>Mango</option>
+                            <option value="orange" {% if request.form['Crop'] == 'orange' %}selected{% endif %}>Orange</option>
+                            <option value="papaya" {% if request.form['Crop'] == 'papaya' %}selected{% endif %}>Papaya</option>
+                            <option value="tomato" {% if request.form['Crop'] == 'tomato' %}selected{% endif %}>Tomato</option>
+                            <option value="cabbage" {% if request.form['Crop'] == 'cabbage' %}selected{% endif %}>Cabbage</option>
+                            <option value="bottlegourd" {% if request.form['Crop'] == 'bottlegourd' %}selected{% endif %}>Bottle Gourd</option>
+                            <option value="pineapple" {% if request.form['Crop'] == 'pineapple' %}selected{% endif %}>Pineapple</option>
+                            <option value="carrot" {% if request.form['Crop'] == 'carrot' %}selected{% endif %}>Carrot</option>
+                            <option value="radish" {% if request.form['Crop'] == 'radish' %}selected{% endif %}>Radish</option>
+                            <option value="bittergourd" {% if request.form['Crop'] == 'bittergourd' %}selected{% endif %}>Bitter Gourd</option>
+                            <option value="drumstick" {% if request.form['Crop'] == 'drumstick' %}selected{% endif %}>Drumstick</option>
+                            <option value="jackfruit" {% if request.form['Crop'] == 'jackfruit' %}selected{% endif %}>Jackfruit</option>
+                            <option value="cauliflower" {% if request.form['Crop'] == 'cauliflower' %}selected{% endif %}>Cauliflower</option>
+                            <option value="watermelon" {% if request.form['Crop'] == 'watermelon' %}selected{% endif %}>Watermelon</option>
+                            <option value="ashgourd" {% if request.form['Crop'] == 'ashgourd' %}selected{% endif %}>Ash Gourd</option>
+                            <option value="beetroot" {% if request.form['Crop'] == 'beetroot' %}selected{% endif %}>Beetroot</option>
+                            <option value="pomegranate" {% if request.form['Crop'] == 'pomegranate' %}selected{% endif %}>Pomegranate</option>
+                            <option value="ridgegourd" {% if request.form['Crop'] == 'ridgegourd' %}selected{% endif %}>Ridge Gourd</option>
+                            <option value="pumpkin" {% if request.form['Crop'] == 'pumpkin' %}selected{% endif %}>Pumpkin</option>
+                            <option value="apple" {% if request.form['Crop'] == 'apple' %}selected{% endif %}>Apple</option>
+                            <option value="ginger" {% if request.form['Crop'] == 'ginger' %}selected{% endif %}>Ginger</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Crop_Type" class="form-label">Season</label>
+                        <select name="Crop_Type" id="Crop_Type" class="form-control" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                            <option value="">Select Crop Type</option>
+                            <option value="kharif" {% if request.form['Crop_Type'] == 'kharif' %}selected{% endif %}>Kharif</option>
+                            <option value="rabi" {% if request.form['Crop_Type'] == 'rabi' %}selected{% endif %}>Rabi</option>
+                            <option value="summer" {% if request.form['Crop_Type'] == 'summer' %}selected{% endif %}>Summer</option>
+                            <option value="whole year" {% if request.form['Crop_Type'] == 'whole year' %}selected{% endif %}>Whole Year</option>
+                        </select>
+                    </div
+
+>
+                    <div class="mb-3">
+                        <label for="Area_in_hectare" class="form-label">Area in Hectares</label>
+                        <input type="number" id="Area_in_hectare" name="Area_in_hectare" class="form-control" value="{{ request.form['Area_in_hectare'] if request.form['Area_in_hectare'] else '' }}" placeholder="Enter area in hectares" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="N" class="form-label">N (Nitrogen)</label>
+                        <input type="number" id="N" name="N" class="form-control" value="{{ N }}" placeholder="Enter Nitrogen value" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="P" class="form-label">P (Phosphorus)</label>
+                        <input type="number" id="P" name="P" class="form-control" value="{{P}}" placeholder="Enter Phosphorus value" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="K" class="form-label">K (Potassium)</label>
+                        <input type="number" id="K" name="K" class="form-control" value="{{ request.form['K'] if request.form['K'] else '' }}" placeholder="Enter Potassium value" required>
+                    </div>
+                    <div class="mb-3">
+    <label for="pH" class="form-label">pH Level</label>
+    <input type="range" id="pH" name="pH" class="form-range" min="0" max="7" step="0.1" value="{{ request.form['pH'] if request.form['pH'] else '' }}" oninput="updatePHValue(this.value)">
+    <div class="slider-value" id="pHValue">{{ request.form['pH'] if request.form['pH'] else '' }}</div>
+</div>
+
+<style>
+    /* Style for the slider */
+    .form-range {
+        -webkit-appearance: none; /* Override default CSS styles */
+        width: 100%; /* Full width */
+        height: 8px; /* Height of the slider */
+        background: linear-gradient(to right, #FF7F50 0%, #003cff 100%); /* Gradient from coral to blue */
+        border-radius: 5px; /* Rounded corners */
+        outline: none; /* Remove outline */
+        opacity: 1; /* Slight transparency */
+        transition: opacity .15s ease-in-out; /* Smooth transition */
+    }
+
+    .form-range:hover {
+        opacity: 1; /* Full opacity on hover */
+    }
+
+    .form-range::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default CSS styles */
+        appearance: none; /* Override default CSS styles */
+        width: 20px; /* Width of the thumb */
+        height: 20px; /* Height of the thumb */
+        border-radius: 50%; /* Circular thumb */
+        background: #FF6347; /* Tomato color */
+        cursor: pointer; /* Pointer cursor on hover */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    }
+
+    .slider-value {
+        text-align: center; /* Center text */
+        margin-top: 10px; /* Spacing above the value */
+        font-size: 1.2rem; /* Font size */
+        color: #333; /* Text color */
+    }
+</style>
+
+<script>
+    function updatePHValue(value) {
+        document.getElementById('pHValue').innerText = value; // Update displayed value
+    }
+</script>
+                    <div class="mb-3">
+    <label for="temperature" class="form-label">Temperature (°C)</label>
+    <input type="range" id="temperature" name="temperature" class="form-control-range" min="0" max="50" value="{{ request.form['temperature'] if request.form['temperature'] else '' }}" required oninput="updateTemperatureValue(this.value)">
+    <div class="slider-value" id="temperature-value">{{ request.form['temperature'] if request.form['temperature'] else '' }} °C</div>
+</div>
+
+<style>
+    .form-control-range {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        background: linear-gradient(to right, blue, red);
+        border-radius: 5px;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity .2s;
+    }
+
+    .form-control-range:hover {
+        opacity: 1; /* Fully opaque on hover */
+    }
+
+    .form-control-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid #ccc;
+        cursor: pointer;
+    }
+
+    .form-control-range::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid #ccc;
+        cursor: pointer;
+    }
+
+    .slider-value {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    function updateTemperatureValue(value) {
+        const temperatureValue = document.getElementById('temperature-value');
+        temperatureValue.textContent = value + ' °C';
+    }
+</script>
+                   <div class="mb-3">
+    <label for="rainfall" class="form-label">Rainfall (mm)</label>
+    <input type="range" id="rainfall" name="rainfall" class="form-range-rainfall" min="0" max="5000" value="{{ request.form['rainfall'] if request.form['rainfall'] else 0 }}" oninput="updateRainfallValue(this.value)">
+    <div class="slider-value" id="rainfallValue">{{ request.form['rainfall'] if request.form['rainfall'] else 0 }}mm</div>
+</div>
+
+<style>
+    /* Style for the rainfall slider */
+    .form-range-rainfall {
+        -webkit-appearance: none; /* Override default CSS styles */
+        width: 100%; /* Full width */
+        height: 12px; /* Height of the slider */
+        background: #A0D8D0; /* Base color */
+        border-radius: 10px; /* Rounded corners */
+        outline: none; /* Remove outline */
+        opacity: 0.9; /* Slight transparency */
+        transition: opacity .15s ease-in-out; /* Smooth transition */
+    }
+
+    .form-range-rainfall:hover {
+        opacity: 1; /* Full opacity on hover */
+    }
+
+    .form-range-rainfall::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default CSS styles */
+        appearance: none; /* Override default CSS styles */
+        width: 30px; /* Width of the thumb */
+        height: 30px; /* Height of the thumb */
+        border-radius: 50%; /* Circular thumb */
+        background: #007BFF; /* Blue color */
+        cursor: pointer; /* Pointer cursor on hover */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        margin-top: -9px; /* Center the thumb vertically */
+    }
+
+    .form-range-rainfall::-webkit-slider-runnable-track {
+        height: 12px; /* Height of the track */
+        border-radius: 10px; /* Rounded corners */
+    }
+
+    .slider-value {
+        text-align: center; /* Center text */
+        margin-top: 10px; /* Spacing above the value */
+        font-size: 1.2rem; /* Font size */
+        color: #333; /* Text color */
+    }
+</style>
+
+<script>
+    function updateRainfallValue(value) {
+        document.getElementById('rainfallValue').innerText = value + ' mm'; // Update displayed value
+    }
+</script>
+                  <button type="submit" class="btn btn-submit">Predict Yield</button>
+
+                 <!-- Your form and button -->
+<button type="button" class="btn btn-reset" onclick="resetForm()" id="clearButton">Clear Form</button>
+                  
+
+    {% if predicted_value is not none %}
+        <h2>
+            <strong>Predicted Yield: </strong>
+            <span id="predicted_value">{{ predicted_value }} tons</span>
+        </h2>
+        <h2>
+            <strong>Yield per Hectare: </strong>
+            <span id="yield_per_hectare">{{ yield_per_hectare }} tons/hectare</span>
+        </h2>
+    {% endif %}
+</form>
+        </div>
+        <div id="message" class="tips-section"> 
+            <h2>Tips to Boost Yield</h2>
+            <div class="tipsContainer" id="tipsContainer">
+                <ul id="tips-list"></ul> 
+            </div>
+        </div>
+        
+        <footer class="text-center mt-5">
+            <h2>About Us</h2>
+            <p>At Anna Drishti, we are dedicated to transforming the agricultural landscape in India through innovative technology and data-driven solutions. Our mission is to empower farmers and agricultural stakeholders with accurate crop yield predictions, enabling them to make informed decisions that can enhance productivity and sustainability.
+
+With the increasing challenges of climate change and resource scarcity, traditional farming practices are often no longer sufficient. Our team of experts has developed a sophisticated platform that leverages machine learning algorithms to analyze various factors affecting crop yield, including temperature, rainfall, soil quality (pH), and fertilizer usage. By integrating real-time data and predictive analytics, Anna Drishti aims to provide actionable insights that can significantly improve crop management and yield outcomes.
+
+We believe that every farmer deserves access to the best tools and information available, which is why we strive to make our platform user-friendly and accessible. Our commitment to continuous improvement ensures that we adapt to the evolving needs of the agricultural sector, helping farmers not only increase their yield but also promote sustainable farming practices that protect the environment for future generations.
+
+Join us in our journey towards a smarter and more sustainable agricultural future with Anna Drishti—where innovation meets tradition for a thriving tomorrow.</p>
+            <p>Contact us at: info@annadrishti.com</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let predictedValueElement = document.getElementById("predicted_value");
+    let predicted_value = parseFloat(predictedValueElement ? predictedValueElement.textContent : 0);
+
+    // Ensure cropType and crop are initialized before use
+    let cropTypeElement = document.getElementById("Crop_Type");
+    let cropElement = document.getElementById("crop");
+
+    let cropType = cropTypeElement ? cropTypeElement.value : "";
+    let crop = cropElement ? cropElement.value : "";
+
+    let messageElement = document.getElementById("message");
+    let tipsContainer = document.getElementById("tipsContainer");
+
+    let tips = "";
+
+    // Determine the tips based on the predicted value, crop type, and crop
+    if (!isNaN(predicted_value)) {
+        
+                // Example based on crop type and crop
+                if (cropType === "rabi") {
+                    if (crop === "wheat") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Fertilization: Apply nitrogen-rich fertilizers at key growth stages.</li>
+                                <li>&#10142; Pest Management: Use resistant varieties and monitor for aphids.</li>
+                                <li>&#10142; Crop Rotation: Rotate with legumes for improved soil health.</li>
+                                
+                            </ul>
+                        `;
+                    } else if (crop === "mustard") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained soil.</li>
+                                <li>&#10142; Weed Control: Use herbicides and manual weeding.</li>
+                                <li>&#10142; Pest Management: Scout for aphids and other pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "barley") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Apply balanced NPK fertilizers based on soil tests.</li>
+                                 <li>&#10142; Weed Management: Use herbicides to control weeds effectively.</li>
+                                <li>&#10142; Pest Monitoring: Regularly scout for pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "blackgram") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Inoculation: Inoculate with rhizobium to enhance nitrogen fixation.</li>
+                           <li>&#10142; Weed Control: Implement timely weeding practices.</li>
+                                <li>&#10142; Drought Tolerance: Select drought-resistant varieties.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "horsegram") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Inoculation: Inoculate with rhizobium to enhance nitrogen fixation.</li>
+                           <li>&#10142; Weed Control: Implement timely weeding practices.</li>
+                                <li>&#10142; Drought Tolerance: Select drought-resistant varieties.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "rapeseed") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Apply phosphorus and potassium based on soil tests.</li>
+                           <li>&#10142;Pest Management: Monitor for pests and use IPM strategies.</li>
+                                <li>&#10142; Crop Rotation: Rotate with legumes to improve yields.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "garlic") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Ensure well-drained, nutrient-rich soil.</li>
+                           <li>&#10142; Fertilization: Apply organic matter and balanced fertilizers.</li>
+                                <li>&#10142;Water Management: Avoid waterlogging and provide consistent moisture.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "onion") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Use rich, well-drained soil for optimal growth.</li>
+                           <li>&#10142;Fertilization: Apply nitrogen and phosphorus at key growth stages.</li>
+                                <li>&#10142;Pest Monitoring: Monitor for pests like onion flies.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "arecanut") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Health: Improve soil fertility with organic matter.</li>
+                           <li>&#10142; Water Management: Ensure adequate moisture levels.</li>
+                                <li>&#10142; Pest Monitoring: Regularly check for pests and diseases.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "potato") {
+                        tips = `
+                            <ul>
+                               <li>&#10142; Soil Preparation: Ensure loose, well-drained soil.</li>
+                           <li>&#10142; Irrigation: Water consistently, especially during tuber development.</li>
+                                <li>&#10142; Disease Management: Rotate crops to prevent disease buildup.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "turmeric") {
+                        tips = `
+                            <ul>
+                            <li>&#10142;Soil Preparation: Ensure well-drained, fertile soil.</li>
+                           <li>&#10142; Mulching: Use organic mulch to retain moisture and suppress weeds.</li>
+                                <li>&#10142; Disease Management: Rotate crops to prevent disease buildup.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "cauliflower") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Use rich, well-drained soil.</li>
+                           <li>&#10142; Irrigation: Provide consistent moisture, especially during curd formation.</li>
+                                <li>&#10142; Pest Management: Use netting to protect against pests.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "cabbage") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Apply nitrogen-rich fertilizers during growth.</li>
+                           <li>&#10142;Weed Control: Use mulch to suppress weeds.</li>
+                                <li>&#10142; Pest Management: Monitor for pests like cabbage worms.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "coriander") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Use well-drained, nutrient-rich soil.</li>
+                           <li>&#10142; Water Management: Keep soil consistently moist.</li>
+                                <li>&#10142; Pest Control: Monitor for pests and diseases regularly.</li>
+                            </ul>
+                        `;
+                    }
+                    
+                } else if (cropType === "kharif") {
+                    if (crop === "rice") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Water Management: Use efficient irrigation methods like alternate wetting and drying.</li>
+                                <li>&#10142; Fertilization: Apply balanced NPK fertilizers based on soil tests.</li>
+                                <li>&#10142; Weed Control: Use herbicides and manual weeding to manage competition.</li>
+                                
+                            </ul>
+                        `;
+                    } else if (crop === "cotton") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Conduct regular soil tests and apply micronutrients.</li>
+                                <li>&#10142; Pest Control: Implement pest-resistant varieties and scout fields regularly.</li>
+                                <li>&#10142; Crop Rotation: Rotate cotton with cereal crops to break pest cycles.</li>
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "maize") {
+                        tips = `
+                            <ul>Crop Rotation: Rotate maize with legumes to improve soil health.</li>
+                                <li>&#10142; Irrigation: Implement drip irrigation to conserve water.</li>
+                                <li>&#10142; Pest Management: Monitor for pests like fall armyworm and use integrated pest management (IPM) strategies.</li>
+                                
+                            </ul>
+                        `;
+                    }
+                    else if (crop === "jowar") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Intercropping: Intercrop with legumes for improved nitrogen fixation.</li>
+                                <li>&#10142; Drought Resistance: Select drought-resistant varieties.</li>
+                                <li>&#10142; Weed Management: Use mulching and timely weeding.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "moong") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Inoculation: Use rhizobium inoculants to improve nitrogen fixation.</li>
+                                <li>&#10142; Soil Moisture: Ensure proper moisture levels during flowering.</li>
+                                <li>&#10142;Pest Monitoring: Monitor for aphids and use neem oil as a natural pesticide.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "ragi") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Improve soil structure with organic matter.</li>
+                                <li>&#10142;Fertilization: Use farmyard manure or compost for nutrient supply.</li>
+                                <li>&#10142; Pest Management: Use resistant varieties to combat pests.</li>
+                                
+                            </ul>
+                        `;
+                    }else if (crop === "sunflower") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Apply phosphorus and potassium for better flowering.</li>
+                                <li>&#10142; Pest Management: Use integrated pest management strategies against sunflower moths.</li>
+                                <li>&#10142;Irrigation: Ensure consistent moisture during the flowering stage.</li>
+                                
+                            </ul>
+                        `;
+                    }else if (crop === "soyabean") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Inoculation: Inoculate seeds with Bradyrhizobium to enhance nitrogen fixation.</li>
+                                <li>&#10142; Row Spacing: Optimize row spacing for better light penetration.</li>
+                                <li>&#10142;Crop Rotation: Rotate with cereals to improve yields.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "sesamum") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Weed Control: Use herbicides and manual weeding to minimize competition.</li>
+                                <li>&#10142;Pest Monitoring: Scout for pests like sesame stem borer.</li>
+                                <li>&#10142; Fertilization: Apply nitrogen and phosphorus based on soil tests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "turmeric") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained, fertile soil.</li>
+                                <li>&#10142; Mulching: Use organic mulch to retain moisture and suppress weeds.</li>
+                                <li>&#10142;Disease Management: Rotate crops to prevent disease buildup.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "blackgram") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Inoculation: Inoculate with rhizobium for better nitrogen fixation.</li>
+                                <li>&#10142; Water Management: Ensure proper drainage during heavy rains.</li>
+                                <li>&#10142; Weed Control: Use mulching and timely weeding.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "bottlegourd") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Moisture: Maintain optimal soil moisture levels during flowering.</li>
+                                <li>&#10142;Crop Rotation: Rotate with cereal crops to enhance nitrogen levels.</li>
+                                <li>&#10142; Pest Control: Use IPM to manage pests like leafcutter ants.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "horsegram") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Fertility: Use organic matter to improve soil health.</li>
+                                <li>&#10142; Weed Management: Implement timely weeding practices.</li>
+                                <li>&#10142; Drought Tolerance: Select drought-resistant varieties.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "bittergourd") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Health: Improve soil fertility with compost.</li>
+                                <li>&#10142; Irrigation: Use drip irrigation for efficient water use.</li>
+                                <li>&#10142;Pest Monitoring: Monitor for pests like whiteflies and aphids.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "brinjal") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Fertilization: Apply balanced fertilizers based on soil tests.</li>
+                                <li>&#10142; Disease Management: Use disease-resistant varieties.</li>
+                                <li>&#10142; Pest Control: Implement IPM for managing pests like fruit flies.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "ladyfinger") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained, nutrient-rich soil.</li>
+                                <li>&#10142; Water Management: Avoid waterlogging and provide adequate moisture.</li>
+                                <li>&#10142; Pest Management: Use neem oil to control aphids and other pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "cucumber") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Use well-rotted manure to enrich the soil.</li>
+                                <li>&#10142; Irrigation: Water consistently to prevent fruit stress.</li>
+                                <li>&#10142; Pest Control: Use insect netting to protect against pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "tomato") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Use a balanced NPK fertilizer during the growing season.</li>
+                                <li>&#10142; Watering: Maintain consistent moisture levels.</li>
+                                <li>&#10142;Disease Management: Rotate crops to prevent diseases like blight.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "papaya") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Use compost and organic fertilizers.</li>
+                                <li>&#10142;Spacing: Space plants adequately for air circulation.</li>
+                                <li>&#10142; Disease Management: Monitor for papaya ringspot virus.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "pumpkin") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Spacing: Provide adequate spacing for air circulation.</li>
+                                <li>&#10142;Mulching: Use organic mulch to retain moisture and suppress weeds.</li>
+                                <li>&#10142; Fertilization: Apply balanced NPK fertilizers.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "watermelon") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Fertilization: Apply balanced fertilizers during planting.</li>
+                                <li>&#10142; Irrigation: Ensure consistent moisture, especially during fruit development.</li>
+                                <li>&#10142;Pest Control: Monitor for pests like aphids and use IPM.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "drumstick") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained, fertile soil.</li>
+                                <li>&#10142; Water Management: Provide irrigation during dry spells.</li>
+                                <li>&#10142; Pest Monitoring: Use neem oil to control pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "grapes") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Pruning: Prune plants to improve air circulation and fruit quality.</li>
+                                <li>&#10142; Water Management: Avoid overwatering and ensure good drainage.</li>
+                                <li>&#10142; Pest Control: Monitor for pests like grape berry moths.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "ashgourd") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Ensure well-drained soil with adequate nutrients.</li>
+                                <li>&#10142; Irrigation: Water regularly to promote healthy growth.m</li>
+                                <li>&#10142; Pest Monitoring: Check for pests and diseases regularly.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "mango") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Use balanced fertilizers during growth stages.</li>
+                                <li>&#10142; Water Management: Ensure adequate watering during flowering.</li>
+                                <li>&#10142; Pest Control: Use netting to protect against fruit flies.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "carrot") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Health: Use loose, well-drained soil for root development.</li>
+                                <li>&#10142; Thinning: Thin seedlings to prevent overcrowding.</li>
+                                <li>&#10142;Pest Control: Monitor for carrot flies and use barriers.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "radish") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Use rich, loamy soil with organic matter.</li>
+                                <li>&#10142; Spacing: Space seeds adequately to avoid competition.</li>
+                                <li>&#10142;Water Management: Keep soil consistently moist.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "cabbage") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Fertilization: Apply nitrogen-rich fertilizers during growth.</li>
+                                <li>&#10142; Weed Control: Use mulch to suppress weeds.</li>
+                                <li>&#10142;Pest Management: Monitor for pests like cabbage worms.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "pineapple") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained soil rich in organic matter.</li>
+                                <li>&#10142; Watering: Water consistently but avoid waterlogging.</li>
+                                <li>&#10142; Fertilization: Apply potassium-rich fertilizers.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "jackfruit") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Watering: Ensure adequate moisture during dry spells.</li>
+                                <li>&#10142; Fertilization: Apply compost and organic fertilizers.</li>
+                                <li>&#10142;Pest Control: Monitor for pests and diseases regularly.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "sweetpotato") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Variety Selection: Choose high-yielding varieties like Bhu Sona or Sree Bhadra that are suitable for the Kharif season</li>
+                                <li>&#10142; Planting Time: Plant sweet potatoes after the monsoon rains, when the soil is moist but not waterlogged.</li>
+                                <li>&#10142; Spacing: Maintain a spacing of about 30-60 cm between plants to allow for proper growth and tuber development.</li>
+                            </ul>
+                        `;
+                    }
+                } else if (cropType === "summer") {
+                    if (crop === "sweetpotato") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Mulching: Use organic mulch to retain soil moisture and suppress weeds. This is crucial during the hot summer months.</li>
+                                <li>&#10142; Shade Management: Provide some shade to young plants to protect them from intense sunlight.</li>
+                                <li>&#10142; Harvesting: Harvest sweet potatoes when the leaves start to yellow and the skin is firm. Avoid leaving them in the ground too long, as this can reduce yield quality.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "pumpkin") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Spacing: Provide adequate spacing for air circulation.</li>
+                                <li>&#10142; Mulching: Use organic mulch to retain moisture and suppress weeds.</li>
+                                <li>&#10142; Fertilization: Apply balanced NPK fertilizers.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "grapes") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Pruning: Prune plants to improve air circulation and fruit quality.</li>
+                                <li>&#10142; Water Management: Avoid overwatering and ensure good drainage.</li>
+                                <li>&#10142; Pest Control: Monitor for pests like grape berry moths.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "watermelon") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Apply balanced fertilizers during planting.</li>
+                                <li>&#10142; Irrigation: Ensure consistent moisture, especially during fruit development.</li>
+                                <li>&#10142;Pest Control: Monitor for pests like aphids and use IPM.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "cucumber") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Fertility: Use well-rotted manure to enrich the soil.</li>
+                                <li>&#10142; Irrigation: Water consistently to prevent fruit stress.</li>
+                                <li>&#10142; Pest Control: Use insect netting to protect against pests.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "papaya") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Fertility: Use compost and organic fertilizers.</li>
+                                <li>&#10142;Spacing: Space plants adequately for air circulation.</li>
+                                <li>&#10142; Disease Management: Monitor for papaya ringspot virus.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "bittergourd") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Improve soil fertility with compost.</li>
+                                <li>&#10142; Irrigation: Use drip irrigation for efficient water use.</li>
+                                <li>&#10142;Pest Monitoring: Monitor for pests like whiteflies and aphids.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "brinjal") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Fertilization: Apply balanced fertilizers based on soil tests.</li>
+                                <li>&#10142; Disease Management: Use disease-resistant varieties.</li>
+                                <li>&#10142; Pest Control: Implement IPM for managing pests like fruit flies.</li> 
+                            </ul>
+                        `;
+                    }else if (crop === "ladyfinger") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Preparation: Ensure well-drained, nutrient-rich soil.r</li>
+                                <li>&#10142;Water Management: Avoid waterlogging and provide adequate moisture.</li>
+                                <li>&#10142; Pest Management: Use neem oil to control aphids and other pests.</li>
+                            </ul>
+                        `;
+                    }
+                }else if (cropType === "whole year"){
+                    if (crop === "arecanut") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Improve soil fertility with organic matter.</li>
+                                <li>&#10142;Water Management: Ensure adequate moisture levels.</li>
+                                <li>&#10142; Pest Monitoring: Regularly check for pests and diseases.</li>
+                            </ul>
+                        `;
+                    } else if (crop === "coriander") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Use well-drained, nutrient-rich soil.</li>
+                           <li>&#10142; Water Management: Keep soil consistently moist.</li>
+                                <li>&#10142; Pest Control: Monitor for pests and diseases regularly.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "garlic") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Ensure well-drained, nutrient-rich soil.</li>
+                           <li>&#10142;Fertilization: Apply organic matter and balanced fertilizers.</li>
+                                <li>&#10142;Water Management: Avoid waterlogging and provide consistent moisture.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "cardamom") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Ensure well-drained, rich soil.</li>
+                           <li>&#10142;Water Management: Provide shade and consistent moisture.</li>
+                                <li>&#10142; Pest Control: Monitor for pests and use organic controls.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "coffee") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Use rich, well-drained soil with organic matter.</li>
+                           <li>&#10142; Water Management: Ensure adequate moisture, especially during flowering.</li>
+                                <li>&#10142;Pest Monitoring: Monitor for coffee berry borer and use IPM.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "blackpepper") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Water Management: Ensure proper drainage and moisture.</li>
+                           <li>&#10142; Pest Monitoring: Regularly scout for pests.</li>
+                                <li>&#10142; Soil Health: Improve soil fertility with compost.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "cashewnuts") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Use well-drained, sandy loam soil.</li>
+                           <li>&#10142; Water Management: Ensure good drainage to avoid root rot.</li>
+                                <li>&#10142; Fertilization: Apply organic fertilizers.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "ginger") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Preparation: Ensure rich, well-drained soil.</li>
+                           <li>&#10142; Watering: Keep soil consistently moist.</li>
+                                <li>&#10142; Pest Control: Monitor for diseases like bacterial wilt.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "pomegranate") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Ensure well-drained, loamy soil.</li>
+                           <li>&#10142;Water Management: Provide adequate irrigation during dry spells.</li>
+                                <li>&#10142; Pest Control: Monitor for pests and use integrated pest management.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "papaya") {
+                        tips = `
+                            <ul>
+                                <li>&#10142;Soil Fertility: Use compost and organic fertilizers.</li>
+                           <li>&#10142; Spacing: Space plants adequately for air circulation.</li>
+                                <li>&#10142; Disease Management: Monitor for papaya ringspot virus.</li>
+                            </ul>
+                        `;
+                    }else if (crop === "banana") {
+                        tips = `
+                            <ul>
+                                <li>&#10142; Soil Health: Use rich, fertile soil with good drainage.</li>
+                           <li>&#10142; Water Management: Ensure adequate watering, especially during dry spells.</li>
+                                <li>&#10142;Fertilization: Apply organic fertilizers and micronutrients.</li>
+                            </ul>
+                        `;
+                    }else{
+                        tips = `
+                            <ul>
+                                <li>&#10142; Ensure optimal soil pH levels for nutrient availability.</li>
+                           <li>&#10142; Practice efficient irrigation techniques.</li>
+                                <li>&#10142;Utilize organic fertilizers to enhance soil health.</li>
+                                <li>&#10142; Monitor pest and weed populations regularly.</li>
+                                <li>&#10142;Implement crop rotation for sustainable agriculture.</li>
+                            </ul>
+                        `;
+                    }
+                }
+        
+                if (tips) {
+                    tipsContainer.innerHTML = tips;
+                    tipsContainer.style.display = "block";
+                    console.log("Tips Container Updated with: ", tips);
+                } else {
+                    tipsContainer.style.display = "none";
+                    console.log("No tips to display.");
+                }
+            } else {
+                console.log("Predicted value is invalid");
+            }
+        
+            // Clear button functionality
+            let clearButton = document.getElementById("clearButton");
+            clearButton.addEventListener('click', function() {
+                tipsContainer.innerHTML = "";  // Clear the tips content
+                tipsContainer.style.display = "none";  // Hide the container
+                console.log("Tips cleared and hidden.");
+            });
+               
+        });
+        
+</script>
+
+<script>
+    function resetForm() {
+        // Reset form fields
+        document.getElementById("predictionForm").reset();
+    
+        // Clear predicted value and yield per hectare display
+        document.getElementById('predicted_value').innerText = '';
+        document.getElementById('yield_per_hectare').innerText = '';
+    
+        // Clear input values manually if needed (not necessary after reset())
+        document.getElementById('State_Name').value = '';
+        document.getElementById('Crop_Type').value = '';
+        document.getElementById('crop').value = '';
+        document.getElementById('rainfall').value = '';
+        document.getElementById('temperature').value = '';
+        document.getElementById('N').value = '';
+        document.getElementById('P').value = '';
+        document.getElementById('K').value = '';
+        document.getElementById('pH').value = '';
+        document.getElementById('Area_in_hectare').value = '';
+        
+    }
+    
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybW49Q3Ik9lI5Dytj7w24xANWxiTnTVKmIjVQoI38Xj7Cv7n1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-xnQXHjp9Zc6M1q7Ehl8LJfg4EglhMOrO9P8Rx4ERQH9Xt5g3qqkF8EpYzGBojy7R" crossorigin="anonymous"></script>
+</body>
+</html>
